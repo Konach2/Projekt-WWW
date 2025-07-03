@@ -1,144 +1,94 @@
-TV Time Clone – Dokumentacja Projektu
-Uniwersytet w Siedlcach
-Wydział Nauk Ścisłych i Przyrodniczych
-Kierunek Informatyka
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+\title{TV Time Clone -- Dokumentacja Projektu}
+\author{Mateusz Konachowicz \\ I~rok~informatyki,~studia~stacjonarne~inżynierskie \\ Uniwersytet w~Siedlcach \\ Wydział Nauk Ścisłych i~Przyrodniczych}
+\date{Siedlce,~rok~akademicki~2024/2025,~semestr~letni}
 
-Przedmiot: Podstawy Technologii WWW
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
 
-Temat Projektu:
-TV Time Clone – Aplikacja do zarządzania listą seriali i filmów
+\tableofcontents
+\newpage
 
-Opracował: [Imię Nazwisko]
-I rok informatyki, studia stacjonarne inżynierskie
+\section{Cel projektu}
+Celem projektu było stworzenie nowoczesnej aplikacji webowej pozwalającej na zarządzanie osobistą listą seriali i~filmów, inspirowanej popularną platformą \emph{TV Time}. Użytkownicy mogą śledzić swoje postępy w~oglądaniu, dodawać filmy do listy życzeń, oceniać oraz pisać recenzje. System powstał z~myślą o~bezpieczeństwie danych, intuicyjnej obsłudze i~możliwości dalszej rozbudowy.
 
-Prowadzący:
-Mgr. inż. Maciej Nazarczuk
+Projekt wykonano \textbf{samodzielnie} -- od projektowania bazy danych, przez implementację backendu w~PHP, po stworzenie responsywnego interfejsu użytkownika. Zastosowano nowoczesne rozwiązania~UI/UX, bezpieczne zarządzanie danymi oraz zaawansowane funkcjonalności administracyjne.
 
-Siedlce, rok akademicki 2024/2025, semestr letni
+\section{Link do~GitHuba}
+Projekt dostępny jest pod adresem: \url{https://github.com/[username]/tvtime-clone}
 
-Spis treści
-Cel projektu
+\section{Spis funkcjonalności}
+\subsection{Funkcje użytkownika standardowego}
+\begin{itemize}[leftmargin=*]
+  \item Rejestracja i~logowanie (hashowanie haseł \emph{bcrypt}).
+  \item Przeglądanie bazy seriali i~filmów z~filtrowaniem według gatunków.
+  \item Dodawanie pozycji do~własnej listy z~różnymi statusami (oglądane, chcę obejrzeć, ukończone, porzucone, wstrzymane).
+  \item Ocenianie w~skali 1--10.
+  \item Pisanie recenzji z~opcją oznaczania spoilerów.
+  \item Podgląd statystyk i~profilu użytkownika.
+  \item System powiadomień o~aktualizacjach.
+  \item Zaawansowana wyszukiwarka treści.
+  \item Szczegółowe karty serialu i~filmu wraz z~sezonami i~odcinkami.
+\end{itemize}
+\subsection{Uprawnienia administratora}
+\begin{itemize}[leftmargin=*]
+  \item Dodawanie, edycja i~usuwanie seriali oraz filmów.
+  \item Zarządzanie kontami użytkowników i~rolami.
+  \item Moderacja recenzji i~treści użytkowników.
+  \item Panel administracyjny z~rozbudowanymi statystykami.
+\end{itemize}
 
-Link do GitHuba
+\section{Prezentacja działania}
+W tej sekcji należy umieścić zrzuty ekranu prezentujące kluczowe funkcjonalności aplikacji.  
+Poniżej znajduje się lista widoków do udokumentowania (obrazy wstaw w osobnym pliku):
 
-Spis funkcjonalności
+\begin{enumerate}[leftmargin=*]
+  \item Strona główna -- eksploracja treści (\texttt{explore.php}).
+  \item Formularz logowania i~rejestracji (\texttt{login.php}, \texttt{register.php}).
+  \item Modal dodawania do~listy.
+  \item Panel ``Moje Filmy'' ze~statystykami.
+  \item Karta serialu z~systemem recenzji.
+  \item Formularz dodawania recenzji.
+  \item Panel administracyjny oraz lista i~formularz dodawania serialu.
+\end{enumerate}
 
-Prezentacja działania
+\section{Diagram tabel}
+% Wstaw diagram ER np. wygenerowany z~phpMyAdmin
+\vspace{0.5cm}
+\textbf{Główne tabele:}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{users} -- dane użytkowników (hasła \emph{bcrypt})
+  \item \texttt{shows}, \texttt{movies} -- informacje o~tytułach
+  \item \texttt{user\_shows}, \texttt{user\_movies} -- relacje użytkownik--tytuł (status, ocena)
+  \item \texttt{reviews} -- recenzje
+  \item \texttt{seasons}, \texttt{episodes}, \texttt{user\_episodes}
+\end{itemize}
+Relacje zabezpieczone kluczami obcymi, indeksy oraz ograniczenia \texttt{CHECK} (ocena~1--10).
 
-Diagram tabel
+\section{Technologie użyte}
+\begin{itemize}[leftmargin=*]
+  \item Backend: PHP~8 (PDO)
+  \item Baza danych: MySQL~8 (InnoDB)
+  \item Frontend: HTML5, CSS3, JavaScript (ES6)
+  \item Style: własne CSS (Flexbox, Grid, animacje)
+  \item Bezpieczeństwo: \emph{bcrypt}, CSRF tokens, prepared statements
+  \item Responsywność: podejście mobile--first, media queries
+\end{itemize}
 
-Technologie użyte
-
-Struktura plików projektu
-
-1. Cel projektu
-Celem projektu było stworzenie nowoczesnej aplikacji webowej pozwalającej na zarządzanie osobistą listą seriali i filmów, inspirowanej popularną platformą TV Time. Użytkownik może śledzić swoje postępy w oglądaniu seriali, dodawać filmy do listy życzeń, oceniać oraz pisać recenzje. System powstał z myślą o bezpieczeństwie danych, intuicyjnej obsłudze i możliwości dalszej rozbudowy.
-
-Projekt został wykonany samodzielnie – od projektowania bazy danych, przez implementację backendu w PHP, aż po stworzenie responsywnego interfejsu użytkownika. Zastosowano nowoczesne rozwiązania UI/UX, bezpieczne zarządzanie danymi oraz zaawansowane funkcjonalności administracyjne.
-
-2. Link do GitHuba
-Projekt dostępny jest pod następującym linkiem:
-https://github.com/[username]/tvtime-clone
-
-3. Spis funkcjonalności
-Funkcje dostępne dla każdego użytkownika
-Rejestracja i logowanie z bezpiecznym hashowaniem haseł (bcrypt).
-
-Przeglądanie bazy seriali i filmów z możliwością filtrowania według gatunków.
-
-Dodawanie tytułów do własnej listy z różnymi statusami: oglądane, chcę obejrzeć, ukończone, porzucone, wstrzymane.
-
-Ocenianie seriali i filmów w skali 1 – 10.
-
-Pisanie recenzji z opcją oznaczania spoilerów.
-
-Podgląd profilu i statystyk oglądania (liczba obejrzanych odcinków, średnia ocena itp.).
-
-System powiadomień o aktualizacjach.
-
-Zaawansowana wyszukiwarka tytułów.
-
-Szczegółowe karty serialu i filmu z obsługą sezonów oraz odcinków.
-
-Dodatkowe uprawnienia administratora
-Dodawanie nowych seriali i filmów do bazy danych.
-
-Edycja i usuwanie istniejących pozycji (tytuł, opis, gatunek, rok, plakat).
-
-Zarządzanie kontami użytkowników oraz ich rolami.
-
-Moderacja recenzji i treści dodawanych przez użytkowników.
-
-Panel z rozbudowanymi statystykami systemu (liczba użytkowników, aktywność itp.).
-
-4. Prezentacja działania
-WAŻNE ❗
-Wstaw tutaj własne zrzuty ekranu w kolejności opisanej poniżej.
-
-Strona główna – Eksploracja treści
-Plik: explore.php
-Strona główna prezentuje sekcje popularnych i najnowszych seriali oraz filmów, umożliwiając szybkie odkrywanie nowych tytułów.
-
-System logowania i rejestracji
-Pliki: login.php, register.php
-Nowoczesne formularze z walidacją danych, kontrolą siły hasła i zabezpieczeniami przed duplikatami.
-
-Modal dodawania do listy
-Plik: components/add-to-list-modal.php
-Intuicyjny modal umożliwiający wybór statusu i dodanie tytułu do kolekcji użytkownika.
-
-Panel „Moje Filmy” ze statystykami
-Plik: movies.php
-Sekcja profilu prezentująca wizualne statystyki (liczba obejrzanych filmów, średnia ocena itp.).
-
-Karta serialu z systemem recenzji
-Plik: show-details.php
-Szczegółowe informacje o serialu, lista sezonów i recenzji oraz opcje zmiany statusu.
-
-Formularz dodawania recenzji
-Plik: components/review-form.php
-Interfejs z poleceniem oceny 1 – 10, polem tekstowym i przełącznikiem spoiler.
-
-Panel administracyjny
-Plik: admin/admin.php
-Nawigacja do zarządzania treściami i użytkownikami.
-
-5. Diagram tabel
-Wstaw tutaj diagram ER wygenerowany np. w phpMyAdmin.
-
-Główne tabele:
-
-users – dane użytkowników z haszowanymi hasłami
-
-shows – seriale
-
-movies – filmy
-
-user_shows – relacja użytkownik ⇄ serial (status, ocena)
-
-user_movies – relacja użytkownik ⇄ film (status, ocena)
-
-reviews – recenzje
-
-seasons, episodes, user_episodes
-
-Relacje i ograniczenia: klucze obce, indeksy wydajnościowe, CHECK (ocena 1-10).
-
-6. Technologie użyte
-Backend: PHP 8 + (PDO)
-
-Baza danych: MySQL 8 (InnoDB)
-
-Frontend: HTML5, CSS3, JavaScript (ES6 +)
-
-Style: niestandardowe CSS (Flexbox, Grid, animacje)
-
-Bezpieczeństwo: bcrypt, CSRF tokens, prepared statements
-
-Responsywność: podejście mobile-first, media queries
-
-7. Struktura plików projektu
-text
+\section{Struktura plików projektu}
+\begin{verbatim}
 ├── index.php
 ├── explore.php
 ├── movies.php
@@ -147,9 +97,9 @@ text
 ├── register.php
 ├── admin/
 │   ├── admin.php
-│   └── ... (pliki panelu)
+│   └── ...
 ├── ajax/
-│   └── *.php (8 plików obsługujących AJAX)
+│   └── *.php (8 plików)
 ├── assets/
 │   ├── css/
 │   ├── js/
@@ -158,17 +108,20 @@ text
     ├── structure.sql
     ├── movies.sql
     └── extensions.sql
-Kluczowe cechy techniczne
-Nowoczesny modal zamiast alert().
+\end{verbatim}
 
-Recenzje z ochroną spoilerów.
+\section*{Kluczowe cechy techniczne}
+\begin{itemize}[leftmargin=*]
+  \item Nowoczesny modal zamiast klasycznych \texttt{alert()}.
+  \item Recenzje z~ochroną spoilerów.
+  \item Statystyki użytkownika aktualizowane w~czasie rzeczywistym.
+  \item Walidacja formularzy po stronie klienta i~serwera.
+  \item Optymalizacja obrazów funkcją \texttt{getImageUrl()}.
+  \item Elastyczny system ról użytkowników.
+\end{itemize}
 
-Statystyki użytkownika aktualizujące się w czasie rzeczywistym.
+\vfill
+\begin{center}
+\end{center}
 
-Panel administratora z pełnym CRUD.
-
-Walidacja po stronie klienta i serwera.
-
-Optymalizacja obrazów funkcją getImageUrl().
-
-Elastyczny system ról użytkowników.
+\end{document}
