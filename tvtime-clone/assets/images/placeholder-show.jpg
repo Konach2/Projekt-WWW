@@ -1,0 +1,8 @@
+<svg width="300" height="450" viewBox="0 0 300 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="300" height="450" fill="#2a2a2a"/>
+<rect x="50" y="150" width="200" height="150" rx="10" fill="#3a3a3a"/>
+<circle cx="150" cy="200" r="25" fill="#666666"/>
+<path d="M130 220L170 220L150 240L130 220Z" fill="#666666"/>
+<text x="150" y="330" text-anchor="middle" fill="#888888" font-family="Arial, sans-serif" font-size="14">Brak plakatu</text>
+<text x="150" y="350" text-anchor="middle" fill="#666666" font-family="Arial, sans-serif" font-size="12">TV Show</text>
+</svg>
